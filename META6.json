@@ -1,0 +1,31 @@
+{
+  "auth": "cpan:WARRINGD",
+  "authors": [
+    "David Warring"
+  ],
+  "build-depends": [
+    "LibraryMake"
+  ],
+  "depends": [
+    "HarfBuzz:ver<0.0.4+>",
+    "Font::FreeType"
+  ],
+  "description": "binds to the HarfBuzz font shaping library",
+  "license": "Artistic-2.0",
+  "name": "HarfBuzz::Font::FreeType",
+  "perl": "6.d",
+  "provides": {
+    "HarfBuzz::Font::FreeType": "lib/HarfBuzz/Font/FreeType.rakumod",
+    "HarfBuzz::Font::FreeType::Raw": "lib/HarfBuzz/Font/FreeType/Raw.rakumod"
+  },
+  "raku": "6",
+  "resources": [
+  ],
+  "source-url": "git://github.com/harfbuzz-raku/HarfBuzz-Font-FreeType-raku.git",
+  "tags": [
+    "font"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
