@@ -30,10 +30,10 @@ jobs:
           ##sudo apt-get install -y libharfbuzz-dev
           wget https://github.com/harfbuzz/harfbuzz/archive/2.7.4.tar.gz
           (tar xvzf 2.7.4.tar.gz && cd harfbuzz-2.7.4 && ./autogen.sh && make)
+          export LD_LIBRARY_PATH=harfbuzz-2.7.4/src/.libs
           zef install --/test App::Prove6
           zef --deps-only install .
       - name: Run Tests
         run: |
-          export LD_LIBRARY_PATH=harfbuzz-2.7.4/src/.libs
           prove6 -l t
           zef install .
