@@ -1,7 +1,7 @@
 use HarfBuzz::Font;
 
 #| A HarfBuzz FreeType face integrated font
-unit class HarfBuzz::Font::FreeType
+unit class HarfBuzz::Font::FreeType:ver<0.0.1>
     is HarfBuzz::Font; #| HarfBuzz FreeType bound font data-type
 
 use HarfBuzz::Raw;
@@ -14,9 +14,17 @@ has Font::FreeType::Face:D $.ft-face is required;
 =head2 Synopsis
 
    use HarfBuzz::Font::FreeType;
+   use HarfBuzz::Shaper;
    use Font::FreeType::Face;
-   my  Font::FreeType::Face .= new: ...;
-   my HarfBuzz::Font::FreeType() .= %( :$ft-face, :@features, :$size, :@scale );
+   my  Font::FreeType::Face $ft-face .= new: ...;
+   my  HarfBuzz::Font::FreeType() .= %( :$ft-face, :@features, :$size, :@scale );
+   my  HarfBuzz::Shaper $shaper .= new: :$font, :buf{ :text<Hello> };
+
+=head2 Description
+
+This modules supports L<FreeType integration|https://harfbuzz.github.io/integration-freetype.html> for the HarfBuzz library.
+
+It may be used to do L<HarfBuzz> shaping from a L<Font::FreeType> object.
 
 =head2 Methods
 =end pod
@@ -45,7 +53,7 @@ method raw(--> hb_ft_font) handles <ft-set-load-flags ft-get-load-flags ft-font-
 }
 
 #| Get or set the FreeType load flags
-method ft-load-flags is rw {
+method ft-load-flags is rw returns Int {
     Proxy.new(
         FETCH => { self.ft-get-load-flags },
         STORE => -> $, UInt:D $flags {
@@ -54,3 +62,10 @@ method ft-load-flags is rw {
     );
 }
 
+=begin pod
+
+=head2 See Also
+
+
+
+=end pod
