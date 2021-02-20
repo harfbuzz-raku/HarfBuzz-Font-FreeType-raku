@@ -2,5 +2,8 @@ Revision history for HarfBuzz-Font-FreeType
 
 {{$NEXT}}
 
+0.0.5  2021-02-20T14:01:11+13:00
+    - Bump to match HarfBuzz version. See https://github.com/ugexe/zef/issues/395.
+
 0.0.1  2021-02-19T07:54:29+13:00
     - Initial version
