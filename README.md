@@ -27,8 +27,35 @@ This modules supports [FreeType integration](https://harfbuzz.github.io/integrat
 
 It may be used to do [HarfBuzz](https://harfbuzz-raku.github.io/HarfBuzz-raku) shaping from a [Font::FreeType](https://pdf-raku.github.io/Font-FreeType-raku/Font/FreeType) object.
 
+Note that HarfBuzz can load OpenType and TrueType format fonts directly. The FreeType integration most likely to be useful for other font formats, that can be loaded by [Font::FreeType](https://harfbuzz-raku.github.io/Font-FreeType-raku/).
+
 Methods
 -------
+
+This class inherits from [HarfBuzz::Font](https://harfbuzz-raku.github.io/HarfBuzz-raku/Font) and has all its methods available.
+
+### new
+
+```raku
+use Font::FreeType::Face;
+use HarfBuzz::Font::FreeType;
+method new(
+    Font::FreeType::Face:D :$ft-face!, # FreeeType face
+    Bool  :$funcs = True,              # use FreeType functions
+    Num() :$size = 12e0,               # font size (points)
+    :@scale,                           # font scale [x, y?]
+) returns HarfBuzz::Font::FreeType:D
+```
+
+Creates a new FreeType integrated font.
+
+```raku
+multi method COERCE(
+    %ops (Font::FreeType::Face:D :$ft-face!, |etc)
+) returns HarfBuzz::Font::FreeType:D
+```
+
+Coerces a FreeType integrated font, from an options hash.
 
 ### method ft-load-flags
 

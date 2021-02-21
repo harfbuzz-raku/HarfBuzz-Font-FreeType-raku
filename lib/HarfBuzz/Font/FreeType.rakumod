@@ -26,7 +26,12 @@ This modules supports L<FreeType integration|https://harfbuzz.github.io/integrat
 
 It may be used to do L<HarfBuzz> shaping from a L<Font::FreeType> object.
 
+Note that HarfBuzz can load OpenType and TrueType format fonts directly. The FreeType integration most likely to be useful for
+other font formats, that can be loaded by [Font::FreeType](https://harfbuzz-raku.github.io/Font-FreeType-raku/).
+
 =head2 Methods
+
+=para This class inherits from L<HarfBuzz::Font> and has all its methods available.
 =end pod
 
 
@@ -41,23 +46,40 @@ submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
         if $funcs;
 }
 
-multi method COERCE(%ops ( :$ft-face!, :$file, |etc) ) {
+=begin pod
+    =head3 new
+    =begin code :lang<raku>
+    use Font::FreeType::Face;
+    use HarfBuzz::Font::FreeType;
+    method new(
+        Font::FreeType::Face:D :$ft-face!, # FreeeType face
+        Bool  :$funcs = True,              # use FreeType functions
+        Num() :$size = 12e0,               # font size (points)
+        :@scale,                           # font scale [x, y?]
+    ) returns HarfBuzz::Font::FreeType:D
+    =end code
+    =para Creates a new FreeType integrated font.
+=end pod
+
+multi method COERCE(%ops ( Font::FreeType::Face:D :$ft-face!, :$file, |etc) --> HarfBuzz::Font::FreeType:D) {
     warn "ignoring ':file' option" with $file;
     my hb_ft_font $raw = hb_ft_font::create($ft-face.raw);
     my HarfBuzz::Face() $face = $raw.get-face();
     self.new(:$raw, :$face, :$ft-face, |etc)
 }
-
-method raw(--> hb_ft_font) handles <ft-set-load-flags ft-get-load-flags ft-font-has-changed> {
-    callsame();
-}
+=begin code :lang<raku>
+multi method COERCE(
+    %ops (Font::FreeType::Face:D :$ft-face!, |etc)
+) returns HarfBuzz::Font::FreeType:D
+=end code
+=para Coerces a FreeType integrated font, from an options hash.
 
 #| Get or set the FreeType load flags
 method ft-load-flags is rw returns Int {
     Proxy.new(
-        FETCH => { self.ft-get-load-flags },
+        FETCH => { self.raw.ft-get-load-flags },
         STORE => -> $, UInt:D $flags {
-            self.ft-set-load-flags($flags);
+            self.raw.ft-set-load-flags($flags);
         }
     );
 }

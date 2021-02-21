@@ -23,7 +23,7 @@
   ],
   "source-url": "git://github.com/harfbuzz-raku/HarfBuzz-Font-FreeType-raku.git",
   "tags": [
-    "font"
+      "font", "harfbuzz", "freetype"
   ],
   "test-depends": [
   ],
