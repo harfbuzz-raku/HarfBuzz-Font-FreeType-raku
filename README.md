@@ -1,6 +1,3 @@
-[[Raku HarfBuzz Project]](https://harfbuzz-raku.github.io)
- / [[HarfBuzz-Font-FreeType Module]](https://harfbuzz-raku.github.io/HarfBuzz-Font-FreeType-raku)
-
 class HarfBuzz::Font::FreeType
 ------------------------------
 
@@ -25,14 +22,14 @@ Description
 
 This modules supports [FreeType integration](https://harfbuzz.github.io/integration-freetype.html) for the HarfBuzz library.
 
-It may be used to do [HarfBuzz](https://harfbuzz-raku.github.io/HarfBuzz-raku) shaping from a [Font::FreeType](https://pdf-raku.github.io/Font-FreeType-raku/Font/FreeType) object.
+It may be used to do [HarfBuzz](HarfBuzz) shaping from a [Font::FreeType](Font::FreeType) object.
 
 Note that HarfBuzz can load OpenType and TrueType format fonts directly. The FreeType integration most likely to be useful for other font formats, that can be loaded by [Font::FreeType](https://harfbuzz-raku.github.io/Font-FreeType-raku/).
 
 Methods
 -------
 
-This class inherits from [HarfBuzz::Font](https://harfbuzz-raku.github.io/HarfBuzz-raku/Font) and has all its methods available.
+This class inherits from [HarfBuzz::Font](HarfBuzz::Font) and has all its methods available.
 
 ### new
 

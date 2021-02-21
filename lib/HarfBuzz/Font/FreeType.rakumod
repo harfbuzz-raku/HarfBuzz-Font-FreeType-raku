@@ -1,7 +1,7 @@
 use HarfBuzz::Font;
 
 #| A HarfBuzz FreeType face integrated font
-unit class HarfBuzz::Font::FreeType:ver<0.0.5>
+unit class HarfBuzz::Font::FreeType:ver<0.0.6>
     is HarfBuzz::Font; #| HarfBuzz FreeType bound font data-type
 
 use HarfBuzz::Raw;

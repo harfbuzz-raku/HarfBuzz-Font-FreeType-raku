@@ -1,6 +1,8 @@
 Revision history for HarfBuzz-Font-FreeType
 
 {{$NEXT}}
+
+0.0.6  2021-02-22T09:04:14+13:00
     - Documentation
 
 0.0.5  2021-02-20T14:01:11+13:00
