@@ -15,7 +15,7 @@ unless $version >= v1.6.0 {
     exit;
 }
 
-my $file = 't/fonts/NimbusRoman-Regular.otf';
+my $file = 't/fonts/TimesNewRomPS.pfb';
 my Font::FreeType::Face $ft-face = Font::FreeType.new.face($file);
 my $size = 36;
 my @scale = 1000, 1000;
@@ -37,15 +37,15 @@ my @expected = [
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 41,
+    g => 62,
     name => 'H',
   },
   {
-    ax => 15.19,
+    ax => 15.98,
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 70,
+    g => 91,
     name => 'e',
   },
   {
@@ -53,7 +53,7 @@ my @expected = [
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 77,
+    g => 98,
     name => 'l',
   },
   {
@@ -61,23 +61,23 @@ my @expected = [
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 77,
+    g => 98,
     name => 'l',
   },
   {
-    ax => 18.00,
+    ax => 9.00,
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 347,
-    name => 'Euro',
+    g => 0,
+    name => '.notdef',
   },
   {
     ax => 11.99,
     ay => 0.0,
     dx => 0.0,
     dy => 0.0,
-    g => 2,
+    g => 23,
     name => 'exclam',
   },
 ];
