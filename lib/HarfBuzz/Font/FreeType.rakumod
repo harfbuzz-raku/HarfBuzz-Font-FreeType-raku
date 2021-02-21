@@ -74,12 +74,16 @@ multi method COERCE(
 =end code
 =para Coerces a FreeType integrated font, from an options hash.
 
+method raw(--> hb_ft_font) handles <ft-set-load-flags ft-get-load-flags ft-font-has-changed> {
+    callsame();
+}
+
 #| Get or set the FreeType load flags
 method ft-load-flags is rw returns Int {
     Proxy.new(
-        FETCH => { self.raw.ft-get-load-flags },
+        FETCH => { self.ft-get-load-flags },
         STORE => -> $, UInt:D $flags {
-            self.raw.ft-set-load-flags($flags);
+            self.ft-set-load-flags($flags);
         }
     );
 }
