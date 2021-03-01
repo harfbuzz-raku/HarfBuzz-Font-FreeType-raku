@@ -61,15 +61,15 @@ submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
     =para Creates a new FreeType integrated font.
 =end pod
 
-multi method COERCE(%ops ( Font::FreeType::Face:D :$ft-face!, :$file, |etc) --> HarfBuzz::Font::FreeType:D) {
+multi method COERCE(% ( Font::FreeType::Face:D :$ft-face!, :$file, :@features, |etc) --> HarfBuzz::Font::FreeType:D) {
     warn "ignoring ':file' option" with $file;
     my hb_ft_font $raw = hb_ft_font::create($ft-face.raw);
     my HarfBuzz::Face() $face = $raw.get-face();
-    self.new(:$raw, :$face, :$ft-face, |etc)
+    self.new(:$raw, :$face, :$ft-face, :@features, |etc)
 }
 =begin code :lang<raku>
 multi method COERCE(
-    %ops (Font::FreeType::Face:D :$ft-face!, |etc)
+    % (Font::FreeType::Face:D :$ft-face!, |etc)
 ) returns HarfBuzz::Font::FreeType:D
 =end code
 =para Coerces a FreeType integrated font, from an options hash.
