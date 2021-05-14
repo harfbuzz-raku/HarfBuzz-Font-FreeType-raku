@@ -51,7 +51,7 @@ Creates a new FreeType integrated font.
 
 ```raku
 multi method COERCE(
-    %ops (Font::FreeType::Face:D :$ft-face!, |etc)
+    % (Font::FreeType::Face:D :$ft-face!, |etc)
 ) returns HarfBuzz::Font::FreeType:D
 ```
 
@@ -59,12 +59,9 @@ Coerces a FreeType integrated font, from an options hash.
 
 ### method ft-load-flags
 
-```perl6
+```raku
 method ft-load-flags() returns Int
 ```
 
 Get or set the FreeType load flags
-
-See Also
---------
 

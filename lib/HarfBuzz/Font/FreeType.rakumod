@@ -88,10 +88,3 @@ method ft-load-flags is rw returns Int {
     );
 }
 
-=begin pod
-
-=head2 See Also
-
-
-
-=end pod
