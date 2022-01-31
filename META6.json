@@ -7,7 +7,7 @@
     "LibraryMake"
   ],
   "depends": [
-    "HarfBuzz:ver<0.0.4+>",
+    "HarfBuzz:ver<0.0.8+>",
     "Font::FreeType"
   ],
   "description": "binds to the HarfBuzz font shaping library",

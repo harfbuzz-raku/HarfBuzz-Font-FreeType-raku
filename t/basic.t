@@ -30,9 +30,10 @@ is $hb.script, HB_SCRIPT_LATIN;
 is $hb.script, 'Latn';
 is $hb.direction, +HB_DIRECTION_LTR;
 is $hb.ft-load-flags, +FT_LOAD_NO_HINTING;
-my @info = $hb.shape>>.ast;
+my @shape = $hb.shape>>.ast;
 my @expected = [
   {
+    c => 0,
     ax => 25.99,
     ay => 0.0,
     dx => 0.0,
@@ -41,6 +42,7 @@ my @expected = [
     name => 'H',
   },
   {
+    c => 1,
     ax => 15.98,
     ay => 0.0,
     dx => 0.0,
@@ -49,6 +51,7 @@ my @expected = [
     name => 'e',
   },
   {
+    c => 2,
     ax => 10.01,
     ay => 0.0,
     dx => 0.0,
@@ -57,6 +60,7 @@ my @expected = [
     name => 'l',
   },
   {
+    c => 3,
     ax => 10.01,
     ay => 0.0,
     dx => 0.0,
@@ -65,6 +69,7 @@ my @expected = [
     name => 'l',
   },
   {
+    c => 4,
     ax => 9.00,
     ay => 0.0,
     dx => 0.0,
@@ -73,6 +78,7 @@ my @expected = [
     name => '.notdef',
   },
   {
+    c => 5,
     ax => 11.99,
     ay => 0.0,
     dx => 0.0,
@@ -84,6 +90,6 @@ my @expected = [
 
 unless HarfBuzz::Shaper.version >= v2.6.6 {
     # name not available in older HarfBuzz versions
-    .<name>:delete for flat @expected, @info;
+    .<name>:delete for flat @expected, @shape;
 }
-is-deeply @info, @expected;
+is-deeply @shape, @expected;
