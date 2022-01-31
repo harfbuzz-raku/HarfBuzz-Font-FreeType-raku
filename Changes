@@ -1,6 +1,8 @@
 Revision history for HarfBuzz-Font-FreeType
 
 {{$NEXT}}
+
+0.0.7  2022-01-31T16:35:09+13:00
     - Fix :@features list coercement in COERCE method
 
 0.0.6  2021-02-22T09:04:14+13:00
