@@ -62,7 +62,6 @@ submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
 =end pod
 
 multi method COERCE(% ( Font::FreeType::Face:D :$ft-face!, :$file, :@features, |etc) --> HarfBuzz::Font::FreeType:D) {
-    warn "ignoring ':file' option" with $file;
     my hb_ft_font $raw = hb_ft_font::create($ft-face.raw);
     my HarfBuzz::Face() $face = $raw.get-face();
     self.new(:$raw, :$face, :$ft-face, :@features, |etc)
