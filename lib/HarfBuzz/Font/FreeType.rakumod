@@ -38,7 +38,7 @@ other font formats, that can be loaded by [Font::FreeType](https://harfbuzz-raku
 submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
     unless @scale {
         my uint32 $sc = ($!ft-face.units-per-EM * $size / 32).round;
-        self.raw.set-scale($sc, $sc);
+        self.raw.set-scale: $sc, $sc;
     }
 
     $!ft-face.set-char-size($size);

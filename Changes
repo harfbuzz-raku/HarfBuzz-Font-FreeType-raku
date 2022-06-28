@@ -1,6 +1,7 @@
 Revision history for HarfBuzz-Font-FreeType
 
 {{$NEXT}}
+    - Upload to zef ecosystem
 
 0.0.7  2022-01-31T16:35:09+13:00
     - Fix :@features list coercement in COERCE method
