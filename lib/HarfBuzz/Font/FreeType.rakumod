@@ -52,7 +52,7 @@ submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
     use Font::FreeType::Face;
     use HarfBuzz::Font::FreeType;
     method new(
-        Font::FreeType::Face:D :$ft-face!, # FreeeType face
+        Font::FreeType::Face:D :$ft-face!, # FreeType face
         Bool  :$funcs = True,              # use FreeType functions
         Num() :$size = 12e0,               # font size (points)
         :@scale,                           # font scale [x, y?]
@@ -61,10 +61,17 @@ submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
     =para Creates a new FreeType integrated font.
 =end pod
 
-multi method COERCE(% ( Font::FreeType::Face:D :$ft-face!, :$file, :@features, |etc) --> HarfBuzz::Font::FreeType:D) {
-    my hb_ft_font $raw = hb_ft_font::create($ft-face.raw);
-    my HarfBuzz::Face() $face = $raw.get-face();
-    self.new(:$raw, :$face, :$ft-face, :@features, |etc)
+    method new(
+        Font::FreeType::Face:D :$ft-face!,
+        hb_ft_font:D :$raw = hb_ft_font::create($ft-face.raw),
+        HarfBuzz::Face() :$face = $raw.get-face(),
+        |etc,
+    ) {
+          nextwith(:$ft-face, :$raw, :$face, |etc);
+    }
+
+multi method COERCE(% ( Font::FreeType::Face:D :$ft-face!, |etc) --> ::?CLASS:D) {
+    self.new(:$ft-face, |etc);
 }
 =begin code :lang<raku>
 multi method COERCE(
