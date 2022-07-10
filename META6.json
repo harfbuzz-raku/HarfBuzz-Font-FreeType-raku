@@ -10,7 +10,7 @@
     "HarfBuzz:ver<0.0.8+>",
     "Font::FreeType"
   ],
-  "description": "binds to the HarfBuzz font shaping library",
+  "description": "Font::FreeType integration with HarfBuzz font shaping library",
   "license": "Artistic-2.0",
   "name": "HarfBuzz::Font::FreeType",
   "perl": "6.d",
