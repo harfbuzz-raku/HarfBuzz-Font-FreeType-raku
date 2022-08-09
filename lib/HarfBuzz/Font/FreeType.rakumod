@@ -34,14 +34,7 @@ other font formats, that can be loaded by [Font::FreeType](https://harfbuzz-raku
 =para This class inherits from L<HarfBuzz::Font> and has all its methods available.
 =end pod
 
-
-submethod TWEAK(:$funcs = True, Num:D() :$size = 12e0, :@scale) {
-    unless @scale {
-        my uint32 $sc = ($!ft-face.units-per-EM * $size / 32).round;
-        self.raw.set-scale: $sc, $sc;
-    }
-
-    $!ft-face.set-char-size($size);
+submethod TWEAK(:$funcs = True) {
     self.raw.ft-set-funcs()
         if $funcs;
 }
