@@ -1,6 +1,8 @@
 Revision history for HarfBuzz-Font-FreeType
 
 {{$NEXT}}
+   - Simplify logic of TWEAK method. Rely on base-class (HarfBuzz::Font)
+     and don't alter size of free-type font
 
 0.0.9  2022-07-08T11:39:55+12:00
    - Move initialization logic from COERCE() to new().
